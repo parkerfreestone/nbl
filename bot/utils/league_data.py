@@ -10,7 +10,7 @@ TEAM_ID_NAME_MAP = {
     "Bears": 8,
     "Gooners": 9,
     "NR": 10,
-    "Crows": 11,
+    "Cookie Crows": 11,
     "Ball Breakers": 12,
     "Kiwis": 13,
     "Figgers": 14,
