@@ -1,8 +1,8 @@
 # Standings command business logic
 
 
-def sandwich():
+def standings_cmd():
     """
-    This function returns a sandwich emoji.
+    Currently returns a schedule emoji.
     """
-    return "🥪"
+    return "📅"
