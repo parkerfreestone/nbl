@@ -79,11 +79,18 @@ class Games(commands.Cog):
                 )
                 home_role = discord.utils.get(ctx.guild.roles, name=home_role_name)
                 away_role = discord.utils.get(ctx.guild.roles, name=away_role_name)
+                home_emoji = discord.utils.get(
+                    ctx.guild.emojis, name=home_role_name.lower().replace(" ", "_")
+                )
+                away_emoji = discord.utils.get(
+                    ctx.guild.emojis, name=away_role_name.lower().replace(" ", "_")
+                )
+                game_winner = id_data[data["games"][game_number]["won"]["tid"]]
                 embed = discord.Embed(
-                    title=f"{away_team} @ {home_team}",
+                    title=f"{away_emoji} {away_team} @ {home_team} {home_emoji}",
                     description="",
                     colour=0x00B0F4,
-                    timestamp=datetime.datetime.utcnow(),
+                    timestamp=datetime.datetime.now(),
                 )
 
                 embed.set_author(
@@ -100,15 +107,17 @@ class Games(commands.Cog):
                     name="Quarter 3", value=f"{q3_home} - {q3_away}", inline=True
                 )
                 embed.add_field(
-                    name="End of Reg", value=f"{q4_home} - {q4_away}", inline=True
+                    name="Fulltime",
+                    value=f"{home_role_name}: {q4_home} - {away_role_name}: {q4_away}",
+                    inline=True,
                 )
                 embed.add_field(
-                    name="End of Reg",
-                    value=f"||{home_role.mention}|| ||{away_role.mention}||",
+                    name="",
+                    value=f"{home_role.mention} {away_role.mention}",
                     inline=False,
                 )
                 embed.set_footer(
-                    text=f"Home Team is Left Number ",
+                    text=f"Home Team is Left Number / All times are in MST",
                     icon_url="https://i.imgur.com/ZLzUuH8.png",
                 )
                 await ctx.send(embed=embed)
